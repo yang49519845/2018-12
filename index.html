@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const objArr = [{
+      "RightName": "开店管理",
+      "RightCode": "00",
+      "FatherCode": "",
+      "Level": "1"
+    },
+    {
+      "RightName": "企业管理",
+      "RightCode": "0000",
+      "FatherCode": "00",
+      "Level": "2"
+    },
+    {
+      "RightName": "门店管理",
+      "RightCode": "0001",
+      "FatherCode": "00",
+      "Level": "2"
+    },
+    {
+      "RightName": "数据分析",
+      "RightCode": "01",
+      "FatherCode": "",
+      "Level": "1"
+    },
+    {
+      "RightName": "日活跃统计",
+      "RightCode": "0100",
+      "FatherCode": "01",
+      "Level": "2"
+    },
+    {
+      "RightName": "活跃分析",
+      "RightCode": "0101",
+      "FatherCode": "01",
+      "Level": "2"
+    },
+    {
+      "RightName": "付费授权",
+      "RightCode": "02",
+      "FatherCode": "",
+      "Level": "1"
+    },
+    {
+      "RightName": "缴费管理",
+      "RightCode": "0200",
+      "FatherCode": "02",
+      "Level": "2"
+    },
+    {
+      "RightName": "对账中心",
+      "RightCode": "0201",
+      "FatherCode": "02",
+      "Level": "2"
+    },
+    {
+      "RightName": "权限管理",
+      "RightCode": "03",
+      "FatherCode": "",
+      "Level": "1"
+    },
+    {
+      "RightName": "角色管理",
+      "RightCode": "0300",
+      "FatherCode": "03",
+      "Level": "2"
+    },
+    {
+      "RightName": "用户管理",
+      "RightCode": "0301",
+      "FatherCode": "03",
+      "Level": "2"
+    },
+    {
+      "RightName": "用户-子1",
+      "RightCode": "030100",
+      "FatherCode": "0301",
+      "Level": "3"
+    },
+    {
+      "RightName": "用户-子2",
+      "RightCode": "030101",
+      "FatherCode": "0301",
+      "Level": "3"
+    },
+    {
+      "RightName": "用户-子2 -子子1",
+      "RightCode": "03010100",
+      "FatherCode": "030101",
+      "Level": "4"
+    },
+    {
+      "RightName": "用户-子2 -子子1-子子子1",
+      "RightCode": "0301010000",
+      "FatherCode": "03010100",
+      "Level": "5"
+    },
+    {
+      "RightName": "用户-子2 -子子1-子子子1-子子子1",
+      "RightCode": "030101000000",
+      "FatherCode": "0301010000",
+      "Level": "6"
+    }
+  ]
+
+  function getSon(item, element) {
+    item.children && item.children.forEach((i) => {
+      if (i.RightCode === element.FatherCode) {
+        (i.children || (i.children = [])).push(element)
+      }
+      getSon(i, element)
+    })
+  }
+
+  function getTree(objArr) {
+    let updateArr = []
+    objArr.forEach(element => {
+      // 最外层
+      if (element.FatherCode === '') {
+        updateArr.push({
+          ...element
+        })
+      } else {
+        updateArr.forEach((item) => {
+          if (item.RightCode === element.FatherCode) {
+            (item.children || (item.children = [])).push(element)
+          }
+          getSon(item, element)
+        })
+      }
+    });
+    return updateArr
+  }
+  console.log(getTree(objArr))
+</script>
+
+</html>
