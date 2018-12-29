@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const g = n => n + 1;
+  const f = n => n * 2;
+
+  // const doStuff = x => {
+  //   const afterG = g(x);
+  //   console.log(`after g: ${ afterG }`);
+  //   const afterF = f(afterG);
+  //   console.log(`after f: ${ afterF }`);
+  //   return afterF;
+  // };
+
+  // doStuff(20);
+
+  const tract = label => value => {
+    console.log(`${label}: ${value}`)
+  }
+  const doStuff = x => {
+    const afterG = g(x)
+    tract('after g')(g(x))
+    const afterF = f(afterG)
+    tract('after f')(afterF)
+  }
+  console.log(doStuff(20))
+
+  // tract('after g')(g(x))
+</script>
+
+</html>

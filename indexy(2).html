@@ -110,7 +110,7 @@
     }
   ];
 
-  var result = (roleTree) => {
+  const result = (roleTree) => {
     let updateArr = [];
     roleTree.forEach((outItem, index, arr) => {
       // 最外层
@@ -124,8 +124,25 @@
     });
     return updateArr;
   }
+  let arr = result(objArr)
 
-  console.log(result(objArr));
+  var str = ``;
+  const getChildren = (obj, strs) => {
+
+    obj.forEach((item) => {
+      str += `-- ${item.RightName} \n`
+      if (item[strs]) {
+        item[strs].forEach(element => {
+          str += `  -- ${element.RightName} \n`
+          getChildren(element[strs], strs)
+        })
+      }
+
+    })
+    console.log(str)
+  }
+
+  getChildren(arr, 'children')
 </script>
 
 </html>

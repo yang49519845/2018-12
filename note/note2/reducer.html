@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  var arr = [1, 2]
+  // console.log(arr.reduce((acc, n) => acc + n, 7))
+
+  const map = (fn, arr) => arr.reduce((acc, item, index, arr) => {
+    return acc.concat(fn(item, index, arr))
+  }, [])
+  const filter = (fn, arr) => reduce((newArr, item) => {
+    return fn(item) ? newArr.concat([item]) : newArr
+  }, [])
+
+  const mapNum = map((a, b, c) => {
+    if (a % 2 === 0) {
+      return a
+    }
+    return 'init'
+  }, [1, 2, 3, 4, 5])
+</script>
+
+</html>

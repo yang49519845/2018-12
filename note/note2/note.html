@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>higher order functions</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const censor = words => {
+    const filtered = [];
+    for (let i = 0, {
+        length
+      } = words; i < length; i++) {
+      const word = words[i];
+      if (word.length !== 4) filtered.push(word);
+    }
+    return filtered
+  }
+  const startsWithS = words => {
+    const filtered = []
+    for (let i = 0, {
+        length
+      } = words; i < length; i++) {
+      const word = words[i];
+      if (word.indexOf('s') !== -1) filtered.push(word)
+    }
+    return filtered
+  }
+  console.log(censor(['oops', 'gasp', 'shout', 'sun']))
+  console.log(startsWithS(['oops', 'gasp', 'shout', 'un']))
+</script>
+
+</html>

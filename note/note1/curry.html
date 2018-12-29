@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 精简的递归自动柯里化
+  const curry = (f, arr = []) => (...args) => (a => a.length === f.length ? f(...a) : curry(f, a))([...arr, ...args])
+
+  const add = curry((a, b, c) => a + b + c)
+
+  add(1)(2)(3) // 6
+  add(1, 2, 3) // 6
+  add(1, 2)(3) // 6
+
+  const combin = a => b => c => a + b + c
+
+  combin(1)(2)(3) // 6
+
+  fun(0)(1)(2)(3)
+
+
+  fun(fun(fun()))
+</script>
+
+</html>
