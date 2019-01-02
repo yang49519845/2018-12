@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Redux reducer</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // reducer 的行为将由 action 类型决定
+  const summingReducer = (state = 0, action = {}) => {
+    const {
+      type,
+      payload
+    } = action;
+
+    switch (type) {
+      case 'ADD_VALUE':
+        return state + payload.value;
+      default:
+        return state;
+    }
+  }
+  const actions = [{
+      type: 'ADD_VALUE',
+      payload: {
+        value: 1
+      }
+    },
+    {
+      type: 'ADD_VALUE',
+      payload: {
+        value: 1
+      }
+    },
+    {
+      type: 'ADD_VALUE',
+      payload: {
+        value: 1
+      }
+    },
+  ]
+  console.log(actions.reduce(summingReducer, 0))
+</script>
+
+</html>
