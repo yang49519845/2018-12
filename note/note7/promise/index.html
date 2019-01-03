@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<!-- <script src="./promise.js"></script> -->
+<!-- <script src="./promise1.js"></script> -->
+<script src="./promise2.js"></script>
+<script>
+  const success = 'success'
+  const error = 'error'
+  const Json1 = {
+    Code: 31547,
+    Message: 'success',
+    data: [{
+      value: 'zhangsan',
+      label: '张三'
+    }]
+  }
+  const hahaPromise = new MyPromise((resolve, reject) => {
+    if (Json1.Code === 31547) {
+      resolve(Json1)
+    } else {
+      reject(error)
+    }
+  })
+  const hehePromise = new Promise((resolve, reject) => {
+    if (Json1.Code === 31547) {
+      resolve(Json1)
+    } else {
+      reject(error)
+    }
+  })
+  setTimeout(() => {
+    hehePromise.then((result) => {
+        console.log(result)
+
+        return result
+      }, (err) => {
+        console.log(err)
+      })
+      .then((resolve) => {
+        console.log(resolve.data)
+        return resolve.data
+      }, (reject) => {
+        console.log(reject)
+      })
+      .then((resolve) => {
+        console.log(resolve[0])
+      }, reject => {
+        console.log(reject)
+      })
+  }, 1000);
+  setTimeout(() => {
+    hahaPromise.then((result) => {
+        console.log(result)
+        return result
+      }, (err) => {
+        console.log(err)
+      })
+      .then((resolve) => {
+        console.log(resolve.data)
+        return resolve.data
+      }, (reject) => {
+        console.log(reject)
+      })
+      .then((resolve) => {
+        console.log(resolve[0])
+      }, reject => {
+        console.log(reject)
+      })
+  }, 1000);
+</script>
+
+</html>
