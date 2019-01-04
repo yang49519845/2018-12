@@ -13,7 +13,8 @@
 </body>
 <!-- <script src="./promise.js"></script> -->
 <!-- <script src="./promise1.js"></script> -->
-<script src="./promise2.js"></script>
+<!-- <script src="./promise2.js"></script> -->
+<script src="./promise3.js"></script>
 <script>
   const success = 'success'
   const error = 'error'
@@ -39,26 +40,25 @@
       reject(error)
     }
   })
-  setTimeout(() => {
-    hehePromise.then((result) => {
-        console.log(result)
-
-        return result
-      }, (err) => {
-        console.log(err)
-      })
-      .then((resolve) => {
-        console.log(resolve.data)
-        return resolve.data
-      }, (reject) => {
-        console.log(reject)
-      })
-      .then((resolve) => {
-        console.log(resolve[0])
-      }, reject => {
-        console.log(reject)
-      })
-  }, 1000);
+  // setTimeout(() => {
+  //   hehePromise.then((result) => {
+  //       console.log(result)
+  //       return result
+  //     }, (err) => {
+  //       console.log(err)
+  //     })
+  //     .then((resolve) => {
+  //       console.log(resolve.data)
+  //       return resolve.data
+  //     }, (reject) => {
+  //       console.log(reject)
+  //     })
+  //     .then((resolve) => {
+  //       console.log(resolve[0])
+  //     }, reject => {
+  //       console.log(reject)
+  //     })
+  // }, 1000);
   setTimeout(() => {
     hahaPromise.then((result) => {
         console.log(result)

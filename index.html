@@ -116,16 +116,16 @@
     }
   ]
 
-  function getSon(item, element) {
-    item.children && item.children.forEach((i) => {
-      if (i.RightCode === element.FatherCode) {
-        (i.children || (i.children = [])).push(element)
-      }
-      getSon(i, element)
-    })
+  const getSon = (item, element) => {
+    if (item.RightCode === element.FatherCode) {
+      (item.children || (item.children = [])).push(element)
+      item.children && item.children.forEach((i) => {
+        getSon(i, element);
+      })
+    }
   }
 
-  function getTree(objArr) {
+  const getTree = (objArr) => {
     let updateArr = []
     objArr.forEach(element => {
       // 最外层
@@ -135,16 +135,41 @@
         })
       } else {
         updateArr.forEach((item) => {
-          if (item.RightCode === element.FatherCode) {
-            (item.children || (item.children = [])).push(element)
-          }
           getSon(item, element)
         })
       }
     });
     return updateArr
   }
-  console.log(getTree(objArr))
+
+  const modelTree = (roleTree) => {
+    let updateArr = []
+    roleTree.forEach((outItem, index, arr) => {
+      // 最外层
+      if (outItem.FatherCode === '') updateArr.push(outItem)
+      arr.forEach(inItem => {
+        if (outItem.RightCode === inItem.FatherCode) {
+          outItem.children = outItem.children || []
+          outItem.children.push(inItem)
+        }
+      })
+    })
+    return updateArr
+  }
+
+  console.log('----- getTree start -----')
+  console.time()
+  getTree(objArr)
+  console.timeEnd()
+  console.log('-----  getTree end  -----')
+  console.log('\n\n\n\n')
+
+
+  console.log('----- modelTree start -----')
+  console.time()
+  modelTree(objArr)
+  console.timeEnd()
+  console.log('-----  modelTree end  -----')
 </script>
 
 </html>

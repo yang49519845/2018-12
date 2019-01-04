@@ -46,7 +46,7 @@ MyPromise.prototype.then = function(onFulfilled, onRejected) {
     typeof onRejected === 'function'
       ? onRejected
       : function(err) {
-          return err
+          throw err
         }
   let _this = this
   let promise2 // 返回的promise
