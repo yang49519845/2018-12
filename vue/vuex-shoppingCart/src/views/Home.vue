@@ -2,7 +2,7 @@
   <div class="home">
     <h1>商品列表</h1>
     <ProductList/>
-    <!-- <ShoppingCart/> -->
+    <ShoppingCart/>
   </div>
 </template>
 
@@ -11,11 +11,11 @@
 // 商品列表
 import ProductList from '@/components/ProductList.vue'
 // 购物车
-// import ShoppingCart from '@/components/ShoppingCart.vue'
+import ShoppingCart from '@/components/ShoppingCart.vue'
 export default {
   name: 'home',
   components: {
-    // ShoppingCart,
+    ShoppingCart,
     ProductList
   }
 }

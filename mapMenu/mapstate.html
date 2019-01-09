@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const headerMenuConfig = [{
+      name: '空菜单',
+      icon: 'flask',
+      children: [{
+          name: 'menu 1',
+          children: [{
+              name: 'menu 1-1',
+              children: [{
+                  name: 'menu 1-1-1'
+                },
+                {
+                  name: 'menu 1-1-2'
+                }
+              ]
+            },
+            {
+              name: 'menu 1-2'
+            }
+          ]
+        },
+        {
+          name: 'menu 2'
+        },
+        {
+          name: 'menu 3'
+        }
+      ]
+    },
+    {
+      name: '演示页面',
+      icon: 'folder-o',
+      children: [{
+          name: '演示 1',
+          path: '/demo1/'
+        },
+        {
+          name: '演示 2',
+          path: '/demo2/'
+        }
+      ]
+    }
+  ]
+
+  function recursiveMenuConfig(arr) {
+    const res = []
+    /**
+     * 转换每个菜单对象上的 name 为 title
+     * @param {Object} obj menu
+     */
+    function convert(obj) {
+      const {
+        name,
+        path,
+        icon,
+        children
+      } = obj
+      return {
+        title: name,
+        icon,
+        path,
+        ...children ? {
+          children: children.map(convert)
+        } : {}
+      }
+    }
+    arr.forEach((menu) => {
+      res.push(convert(menu))
+    })
+    return res
+  }
+  console.log(headerMenuConfig)
+  console.log(recursiveMenuConfig(headerMenuConfig))
+</script>
+
+</html>
