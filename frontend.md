@@ -1,3 +1,9 @@
+# git 生成 ssh
+
+cd ~/.ssh
+
+ssh-keygen -t rsa -C "your_email@example.com"
+
 # 前端页面制作规范
 
 ## 项目构建工具
